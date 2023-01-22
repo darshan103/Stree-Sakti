@@ -7,33 +7,34 @@ import Checkout from "./Checkout";
 import Login from "./Login";
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
+import SuccessCheckout from "./SuccessCheckout";
 
 function App() {
   // eslint-disable-next-line
-  const [{}, dispatch] = useStateValue();
+  // const [{}, dispatch] = useStateValue();
 
-  useEffect(() => {
+  // useEffect(() => {
     // Will only run once when the app component loads...
 
-    auth.onAuthStateChanged((authUser) => {
-      console.log("THE USER IS >>>", authUser);
+  //   auth.onAuthStateChanged((authUser) => {
+  //     console.log("THE USER IS >>>", authUser);
 
-      if (authUser) {
-        // the user just logged in || the user was logged in
-        dispatch({
-          type: "SET_USER",
-          user: authUser,
-        });
-      } else {
-        // the user is logged out
-        dispatch({
-          type: "SET_USER",
-          user: null,
-        });
-      }
-    });
-    // eslint-disable-next-line
-  }, []);
+  //     if (authUser) {
+  //       // the user just logged in || the user was logged in
+  //       dispatch({
+  //         type: "SET_USER",
+  //         user: authUser,
+  //       });
+  //     } else {
+  //       // the user is logged out
+  //       dispatch({
+  //         type: "SET_USER",
+  //         user: null,
+  //       });
+  //     }
+  //   });
+  //   // eslint-disable-next-line
+  // }, []);
 
   return (
     <Router>
@@ -49,6 +50,10 @@ function App() {
           <Route path="/">
             <Header />
             <Home />
+          </Route>
+          <Route path="/success">
+            <Header />
+            <SuccessCheckout />
           </Route>
         </Switch>
       </div>

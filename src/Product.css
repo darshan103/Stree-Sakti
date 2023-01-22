@@ -22,8 +22,17 @@
   object-fit: contain;
   margin-bottom: 15px;
 }
-
+.profile{
+  max-height: 40px;
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+.product > button:hover{
+  background-color: rgb(125, 113, 125);
+}
 .product > button {
+
   background: #f0c14b;
   border: 1px solid;
   margin-top: 10px;

@@ -6,7 +6,7 @@ export const initialState = {
 export const getBasketTotal = (basket) =>
   basket?.reduce((amount, item) => item.price + amount, 0);
 
-const reducer = (state, action) => {
+const Reducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_BASKET":
       return {
@@ -24,7 +24,7 @@ const reducer = (state, action) => {
         newBasket.splice(index, 1);
       } else {
         console.warn(
-          `Can't remove product (id: ${action.id}) as its not in basket!`
+          `Can't remove product (id: ₹{action.id}) as its not in basket!`
         );
       }
 
@@ -36,12 +36,18 @@ const reducer = (state, action) => {
     case "SET_USER":
       return {
         ...state,
-        user: action.user,
+        user: action.payload,
       };
+
+    case "LOGOUT": 
+      return {
+        basket: [],
+        user: null,
+      }
 
     default:
       return state;
   }
 };
 
-export default reducer;
+export default Reducer;

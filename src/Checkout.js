@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Checkout.css";
 import CheckoutProduct from "./CheckoutProduct";
 import Subtotal from "./Subtotal";
-import { useStateValue } from "./StateProvider";
+import { StateContext, useStateValue } from "./StateProvider";
 
 function Checkout() {
   // eslint-disable-next-line
-  const [{ basket, user }, dispatch] = useStateValue();
+  const {state, dispatch} = useContext(StateContext);
+  const { user, basket } = state;
 
   return (
     <div className="checkout">

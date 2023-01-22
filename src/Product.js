@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Product.css";
-import { useStateValue } from "./StateProvider";
+import { StateContext, useStateValue } from "./StateProvider";
 
-function Product({ id, title, image, price, rating }) {
+function Product({ id, title, image, price, rating,img }) {
   // eslint-disable-next-line
-  const [{}, dispatch] = useStateValue();
+  // const [{}, dispatch] = useStateValue();
+  const {state, dispatch} = useContext(StateContext);
 
   const addToBasket = () => {
     dispatch({
@@ -15,15 +16,17 @@ function Product({ id, title, image, price, rating }) {
         image: image,
         price: price,
         rating: rating,
+        img: image,
       },
     });
   };
   return (
     <div className="product">
       <div className="product_info">
+      <img class="profile" src={img} alt="" />
         <p>{title}</p>
         <p className="product_price">
-          <small>$</small>
+          <small>₹</small>
           <strong>{price}</strong>
         </p>
         <div className="product_rating">

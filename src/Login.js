@@ -1,19 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "./firebase";
+import { StateContext } from "./StateProvider";
 
 function Login() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  })
+  const [isRegister, setIsRegister] = useState(false);
+
+  const { state, dispatch } = useContext(StateContext);
+
+  const handleChange = (event) => {
+    setUserData({ ...userData, [event.target.name]: event.target.value })
+  }
 
   const signIn = (e) => {
-    // for no refreshing in react
     e.preventDefault();
     auth
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(userData.email, userData.password)
       .then((auth) => {
+        console.log(auth)
+        dispatch({ type: "SET_USER", payload: { email: userData.email, name: userData.name, password: userData.password } })
         history.push("/");
       })
       .catch((error) => alert(error.message));
@@ -23,8 +37,9 @@ function Login() {
     e.preventDefault();
 
     auth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(userData.email, userData.password)
       .then((auth) => {
+        dispatch({ type: "SET_USER", payload: { email: userData.email, name: userData.name, password: userData.password } })
         history.push("/");
       })
       .catch((error) => alert(error.message));
@@ -33,31 +48,42 @@ function Login() {
   return (
     <div className="login">
       <Link to="/">
-        <img
-          className="login_logo"
-          src="https://firebasestorage.googleapis.com/v0/b/clone-df2be.appspot.com/o/Amazon%20logo.png?alt=media&token=324027df-dea8-4f4c-90eb-d5124f0a524e"
-          alt=""
-        />
+
       </Link>
 
       <div className="login_container">
-        <h1>Sign-in</h1>
+        <h1>{isRegister ? "Create an account" : "Sign-in"}</h1>
         <form>
+          {
+            isRegister ? (
+              <div>
+                <h5>Name</h5>
+                <input
+                  type="text"
+                  name="name"
+                  value={userData.name}
+                  onChange={handleChange}
+                />
+              </div>
+            ) : ("")
+          }
           <h5>E-mail</h5>
           <input
             type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            value={userData.email}
+            onChange={handleChange}
           />
           <h5>Password</h5>
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={userData.password}
+            onChange={handleChange}
           />
 
-          <button type="submit" onClick={signIn} className="login_signInButton">
-            Sign In
+          <button type="submit" onClick={isRegister ? register : signIn} className="login_signInButton">
+            {isRegister ? "Create an account" : "Sign In"}
           </button>
         </form>
         <p>
@@ -66,9 +92,7 @@ function Login() {
           it over 2000 years old. Richard McClintock, a Latin professor at
           Hampden-Sydney College in Virginia.
         </p>
-        <button onClick={register} className="login_registerButton">
-          Create Your Amazon Account
-        </button>
+        <p onClick={() => setIsRegister(!isRegister)} className="linkText">{isRegister ? "Already have an account? Sign in" : "New here? Register now"}</p>
       </div>
     </div>
   );

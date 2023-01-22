@@ -8,9 +8,9 @@
 
 .login_logo {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   object-fit: contain;
-  width: 100px;
+  width: 150px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -29,12 +29,11 @@
   font-weight: 500;
   margin-bottom: 20px;
 }
-
-.login_container > form > input {
+input {
   margin-bottom: 5px;
 }
 
-.login_container > form > input {
+input {
   height: 30px;
   margin-bottom: 10px;
   background-color: white;
@@ -63,4 +62,9 @@
   border: 1px solid;
   margin-top: 10px;
   border-color: darkgray;
+}
+
+.linkText {
+  color: blue;
+  text-decoration: underline;
 }

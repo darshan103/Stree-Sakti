@@ -6,6 +6,10 @@
   max-width: 1500px;
 }
 
+.container {
+  display: flex;
+}
+
 .home_row {
   display: flex;
   z-index: -1;
@@ -13,9 +17,15 @@
   margin-right: 5px;
 }
 
+.home_row title {
+  font-weight: bold
+}
+
 .home_image {
-  width: 100%;
+  width: 98%;
   z-index: -1;
-  margin-bottom: -150px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 5px;
+  /* mask-image: linear-gradient(to bottom, rgb(2, 12, 18), rgba(4, 2, 2, 0)); */
 }
