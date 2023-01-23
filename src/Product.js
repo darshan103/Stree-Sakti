@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import "./Product.css";
 import { StateContext, useStateValue } from "./StateProvider";
+import profile from './userImg.jpg'
 
-function Product({ id, title, image, price, rating,img }) {
-  // eslint-disable-next-line
-  // const [{}, dispatch] = useStateValue();
-  const {state, dispatch} = useContext(StateContext);
+function Product({ id, title, image, price, rating, img }) {
+  const { state, dispatch } = useContext(StateContext);
 
   const addToBasket = () => {
     dispatch({
@@ -22,8 +21,9 @@ function Product({ id, title, image, price, rating,img }) {
   };
   return (
     <div className="product">
+       <img className="profile__img" src={profile} alt="" />
+      <img src={image} alt="" className="main__img"/>
       <div className="product_info">
-      <img class="profile" src={img} alt="" />
         <p>{title}</p>
         <p className="product_price">
           <small>₹</small>
@@ -37,7 +37,6 @@ function Product({ id, title, image, price, rating,img }) {
             ))}
         </div>
       </div>
-      <img src={image} alt="" />
       <button onClick={addToBasket}>Add the basket</button>
     </div>
   );

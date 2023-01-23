@@ -16,26 +16,24 @@
   display: flex;
 }
 
-.product > img {
+.main__img {
   max-height: 200px;
   width: 100%;
   object-fit: contain;
   margin-bottom: 15px;
 }
-.profile{
-  max-height: 40px;
-  width: 100%;
-  object-fit: contain;
-  margin-bottom: 15px;
+.profile__img{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 .product > button:hover{
   background-color: rgb(125, 113, 125);
 }
 .product > button {
-
   background: #f0c14b;
   border: 1px solid;
-  margin-top: 10px;
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
 }
@@ -46,5 +44,8 @@
 
 .product_info {
   height: 100px;
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

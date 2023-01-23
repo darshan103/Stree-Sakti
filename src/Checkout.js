@@ -12,11 +12,6 @@ function Checkout() {
   return (
     <div className="checkout">
       <div className="checkout_left">
-        <img
-          className="checkout_ad"
-          src="https://firebasestorage.googleapis.com/v0/b/clone-df2be.appspot.com/o/XCM_Manual_1312033_1602487_in_overallla_banner_1500x300_in-en_3a63b2ec-bc35-4ced-8413-0824d36aa082.jpg?alt=media&token=bfb5803d-6f4e-4670-a469-26cc6fbe169b"
-          alt=""
-        />
         <div>
           <h3>Hello, {user?.email}</h3>
           <h2 className="checkout_title">Your Shopping Basket</h2>

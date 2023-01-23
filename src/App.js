@@ -10,32 +10,6 @@ import { useStateValue } from "./StateProvider";
 import SuccessCheckout from "./SuccessCheckout";
 
 function App() {
-  // eslint-disable-next-line
-  // const [{}, dispatch] = useStateValue();
-
-  // useEffect(() => {
-    // Will only run once when the app component loads...
-
-  //   auth.onAuthStateChanged((authUser) => {
-  //     console.log("THE USER IS >>>", authUser);
-
-  //     if (authUser) {
-  //       // the user just logged in || the user was logged in
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: authUser,
-  //       });
-  //     } else {
-  //       // the user is logged out
-  //       dispatch({
-  //         type: "SET_USER",
-  //         user: null,
-  //       });
-  //     }
-  //   });
-  //   // eslint-disable-next-line
-  // }, []);
-
   return (
     <Router>
       <div className="app">
@@ -47,13 +21,13 @@ function App() {
             <Header />
             <Checkout />
           </Route>
-          <Route path="/">
-            <Header />
-            <Home />
-          </Route>
           <Route path="/success">
             <Header />
             <SuccessCheckout />
+          </Route>
+          <Route path="/">
+            <Header />
+            <Home />
           </Route>
         </Switch>
       </div>

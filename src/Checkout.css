@@ -1,7 +1,9 @@
 .checkout {
   display: flex;
   padding: 20px;
+  justify-content: space-around;
   background-color: white;
+  min-height: 100vh;
   height: max-content;
 }
 
